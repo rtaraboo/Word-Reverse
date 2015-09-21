@@ -8,7 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var txtName: UITextField!
+    
+    
+    @IBOutlet weak var lblReverseWord: UILabel!
+    
+    var wordData = ""
+    var reversedWord = ""
+    
+    
+    
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +35,91 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    @IBAction func btnReverse(sender: UIButton) {
+        
+        reverseTheWord()
+        
+    }
+    
+    
+    
+    @IBAction func btnClear(sender: UIButton) {
+        
+        reset()
+    }
+    
+    
+    func reverseTheWord(){
+        
+        wordData = txtName.text!
+        reversedWord = String(wordData.characters.reverse())
+        hideKeyboard()
+        printLabel()
+        
+    
+    }
+    
+    func reset(){
+        
+        txtName.text = ""
+        lblReverseWord.text = "WORD"
+        
+        
+        hideKeyboard()
+        
+        
+    }
+    
+    func printLabel(){
+        
+        lblReverseWord.text = "\(reversedWord.lowercaseString)"
+        
+        
+    }
+    
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+       hideKeyboard()
+    }
+    
+    
+    
+    func hideKeyboard(){
+        
+        txtName.resignFirstResponder()
+        
+       
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
 
 
 }
